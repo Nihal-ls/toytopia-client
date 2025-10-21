@@ -1,6 +1,8 @@
-import React from 'react';
-
+import React, { use } from 'react';
+import { Authcontext } from '../Provider/AuthProvider';
+import profileimg from "../assets/profile.webp"
 const Navbar = () => {
+    const { user } = use(Authcontext)
     return (
         <div className='bg-[#A0E7E5]'>
             <div className="navbar container mx-auto">
@@ -40,7 +42,11 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end items-center">
+                    {
+                        user ? <img className='w-[40px] rounded-full mr-2 border-2 ' src={user.photoURL} alt="" /> : <img className='w-[40px] rounded-full mr-2 border-2 ' src={profileimg} alt="" />
+
+                    }
                     <a className="btn btn-primary hover:scale-120 transition ease-in-out" >Login</a>
                 </div>
             </div>
