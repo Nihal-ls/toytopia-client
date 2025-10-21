@@ -5,7 +5,7 @@ const Toycard = ({ toy }) => {
     const { pictureURL, toyName, price, rating, availableQuantity } = toy
     return (
         <div>
-            <div className="card bg-base-100  mx-auto md:mx-auto w-70 mt-5  shadow-sm">
+            <div className="card bg-base-100  mx-auto md:mx-auto w-70 mt-5  shadow-sm hover:scale-110 transition ease-in-out">
                 <figure>
                     <img
                         className="w-full h-[300px] object-contain"

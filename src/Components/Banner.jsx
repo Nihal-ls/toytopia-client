@@ -4,7 +4,7 @@ import bannerimg from '../assets/bannerImg.jpg'
 const Banner = () => {
     return (
         <div>
-            <section className='w-full sm:w-4/4 md:w-1/3 lg:w-1/2   mx-auto'>
+            <section className='w-full sm:w-4/4 md:w-1/3 lg:w-1/2  mx-auto'>
                 <div
                     className="bg-no-repeat bg-cover mt-10  rounded-2xl "
                     style={{ backgroundImage: `url(${bannerimg})` }}
@@ -16,7 +16,7 @@ const Banner = () => {
                             <p className="mb-5 text-sm">
                                 A vibrant and playful online marketplace for kids' toys, encouraging families to discover and support local toy sellers.. Users can log in, browse toys, view detailed info, and leave feedback or ratings for toys they want to buy for their kids.
                             </p>
-                            <button className="btn btn-primary  w-30 mx-auto hover:scale-120 transition ease-in-out">Get Started</button>
+                            <button className="btn border-0 w-40 mx-auto bg-[#60ece8] text-white hover:scale-120 transition ease-in-out">Get Started</button>
                         </div>
                     </div>
                     </div>
