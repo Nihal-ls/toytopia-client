@@ -2,8 +2,8 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <div>
-            <div className="navbar bg-[#F0C0DB] shadow-sm">
+        <div className='bg-[#A0E7E5]'>
+            <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn bg-[#fff] border border-[#d48eb3] hover:bg-[#f0b7d2]" >Button</a>
+                    <a className="btn btn-primary hover:scale-120 transition ease-in-out" >Login</a>
                 </div>
             </div>
         </div>

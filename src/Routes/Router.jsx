@@ -5,9 +5,14 @@ import Home from "../Pages/Home";
 const router = createBrowserRouter([{
     path: '/',
     element: <HomeLayout></HomeLayout>,
-    children: [{
+    children: [
+        {
         index: true,
-        Component: Home
-    }]
+        Component: Home,
+        loader: () => fetch('../Toys.json')
+    }
+
+
+] 
 }])
 export default router
