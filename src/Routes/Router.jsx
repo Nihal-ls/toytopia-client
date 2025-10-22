@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Viewdetails from "../Pages/Viewdetails";
+import PrivateRoute from "../Provider/PrivateRoute";
+import AllToys from "../Pages/AllToys";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -12,7 +14,8 @@ const router = createBrowserRouter([{
         {
             index: true,
             Component: Home,
-            loader: () => fetch('../Toys.json')
+            loader: () => fetch('../Toys.json'),
+            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
         }
 
 
@@ -28,8 +31,20 @@ const router = createBrowserRouter([{
 },
 {
     path: 'view-details/:ToyId',
-    Component: Viewdetails,
-    loader: () => fetch('../Toys.json')
+    element: <PrivateRoute>
+        <Viewdetails></Viewdetails>
+    </PrivateRoute>,
+    loader: () => fetch('../Toys.json'),
+    hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
+
+
+},
+{
+    path: 'allToys',
+    element: <AllToys/>,
+    loader: () => fetch('../Toys.json'),
+    hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
+
 
 },
 

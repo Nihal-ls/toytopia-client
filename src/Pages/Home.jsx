@@ -1,4 +1,3 @@
-import React, { use } from 'react';
 import Banner from '../Components/Banner';
 import { useLoaderData } from 'react-router';
 import Toycard from '../Components/Toycard';
