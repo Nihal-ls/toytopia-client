@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const Discount = () => {
     const data = useLoaderData()
@@ -26,7 +26,8 @@ const Discount = () => {
                             />
                             <h3 className="text-xl font-bold text-gray-800">{toy.toyName}</h3>
                             <p className="text-gray-600 mt-2">Flat 20% OFF on all sets</p>
-                            <button className="btn mt-3 bg-[#60ece8] text-white hover:scale-120 transition ease-in-out">View Details</button>
+                                      <Link to={`/view-details/${toy.toyId}`}  className="btn bg-[#60ece8] text-white hover:scale-120 transition ease-in-out">View Details</Link>
+
                         </div>
                         )}
                     </div>

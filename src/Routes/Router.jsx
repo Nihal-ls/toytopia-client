@@ -41,7 +41,7 @@ const router = createBrowserRouter([{
 },
 {
     path: 'allToys',
-    element: <AllToys/>,
+    element: <AllToys />,
     loader: () => fetch('../Toys.json'),
     hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 

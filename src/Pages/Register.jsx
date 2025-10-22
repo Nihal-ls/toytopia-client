@@ -1,14 +1,20 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import bgimg from '../assets/page-bg.jpg'
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import googleImg from '../assets/icons8-google.svg'
 import { Authcontext } from '../Provider/AuthProvider';
 import { LuChevronsLeftRightEllipsis } from 'react-icons/lu';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { CiLineHeight } from 'react-icons/ci';
 const googleprovider = new GoogleAuthProvider()
 const Register = () => {
-    const { createUser, setUser, googleSignin } = use(Authcontext)
+    const { createUser, setUser, googleSignin, updateUser } = use(Authcontext)
+
+    const [nameError, setNameerror] = useState('')
+
+    const navigate = useNavigate();
+
 
     const validatePassword = (password) => {
         const checkuppercase = /[A-Z]/.test(password);
@@ -21,6 +27,13 @@ const Register = () => {
     const handleRegister = (e) => {
         e.preventDefault()
         const Name = e.target.name.value
+        if (Name.length < 5) {
+            setNameerror('Name should be more then 5 character long')
+            return
+        }
+        else {
+            setNameerror('')
+        }
         const photo = e.target.photo.value
         const email = e.target.email.value
         const password = e.target.password.value
@@ -45,7 +58,16 @@ const Register = () => {
                 });
                 const user = result.user
                 console.log(user)
-                setUser(user)
+                updateUser({displayName: Name,photoURL: photo})
+                .then(() => {
+                    setUser({...user,displayName: Name,photoURL: photo})
+                    navigate('/')
+                }).catch(err => {
+                    alert('something went wrong')
+                    console.log(err);
+                    setUser(user)
+                })
+                
 
 
             }).catch(err => console.log(err))
@@ -75,16 +97,17 @@ const Register = () => {
                             <form className="fieldset " onSubmit={handleRegister}>
                                 {/* Name */}
                                 <label className="label">Name</label>
-                                <input name='name' type="text" className="input" placeholder="Name" />
+                                <input required name='name' type="text" className="input" placeholder="Name" />
+                                {nameError && <p className='text-red-500'>{nameError}</p>}
                                 {/* Photo URL */}
                                 <label className="label">Photo URL</label>
                                 <input name='photo' type="text" className="input" placeholder="Photo URL" />
                                 {/* email */}
                                 <label className="label">Email</label>
-                                <input name='email' type="email" className="input" placeholder="Email" />
+                                <input required name='email' type="email" className="input" placeholder="Email" />
                                 {/* password */}
                                 <label className="label">Password</label>
-                                <input name='password' type="password" className="input" placeholder="Password" />
+                                <input required name='password' type="password" className="input" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn bg-[#60ece8] text-white border-0 mt-2">Login</button>
                                 <p typeof='submit' className=''>Already Have An Account? <Link className='text-blue-500' to='/login'>Login</Link></p>
