@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { CiLineHeight } from 'react-icons/ci';
 const googleprovider = new GoogleAuthProvider()
 const Register = () => {
-    const { createUser, setUser, googleSignin, updateUser } = use(Authcontext)
+    const { createUser, setUser, googleSignin, updateUser} = use(Authcontext)
 
     const [nameError, setNameerror] = useState('')
 
@@ -111,8 +111,7 @@ const Register = () => {
                                 {/* password */}
                                 <label className="label">Password</label>
                                 <input required name='password' type="password" className="input" placeholder="Password" />
-                                <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn bg-[#60ece8] text-white border-0 mt-2">Login</button>
+                                <button className="btn bg-[#60ece8] text-white border-0 w-80 mt-2">Login</button>
                                 <p typeof='submit' className=''>Already Have An Account? <Link className='text-blue-500' to='/login'>Login</Link></p>
                             </form>
                             <button onClick={hanldeGoogleSignIn}><img className='w-[40px] p-1 mx-auto bg-white rounded-full' src={googleImg} alt="" /></button>

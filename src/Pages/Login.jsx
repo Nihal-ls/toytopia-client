@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import bgimg from '../assets/page-bg.jpg'
 import googleimg from '../assets/icons8-google.svg'
 import { Link, useLocation, useNavigate } from 'react-router';
@@ -8,9 +8,11 @@ import Swal from 'sweetalert2';
 
 const googleprovider = new GoogleAuthProvider()
 const Login = () => {
-    const { login, googleSignin, setUser } = use(Authcontext)
+    const { login, googleSignin, setUser, forgetpassword } = use(Authcontext)
 
     const [error, seterror] = useState("")
+
+    const emailref = useRef()
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -27,7 +29,7 @@ const Login = () => {
 
                 Swal.fire({
                     icon: "Success",
-                    title: "Successful",
+                    title: "VERIFY",
                     text: "Login Successful With Google",
                     confirmButtonColor: "#3085d6",
                 });
@@ -65,6 +67,20 @@ const Login = () => {
             })
 
     }
+    const handleForgetPassword = () => {
+        const email = emailref.current.value
+        console.log(email)
+        forgetpassword(email)
+        .then(() => {
+              Swal.fire({
+                    icon: "Success",
+                    title: "VERIFY",
+                    text: "PLEASE CHECK YOUR EMAIL",
+                    confirmButtonColor: "#3085d6",
+                });
+        })
+        .catch(err => console.log(err))
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-cover bg-no-repeat"
@@ -80,11 +96,17 @@ const Login = () => {
                         <div className="card-body">
                             <form className="fieldset" onSubmit={handleLogin}>
                                 <label className="label">Email</label>
-                                <input required name='email' type="email" className="input" placeholder="Email" />
+                                <input ref={emailref} required name='email' type="email" className="input" placeholder="Email" />
                                 <label className="label">Password</label>
                                 <input required name='password' type="password" className="input" placeholder="Password" />
-                                <div><a className="link link-hover">Forgot password?</a></div>
-                                <button type='submit' className="btn bg-[#60ece8] text-white border-0 mt-2">Login</button>
+
+
+                                <div onClick={handleForgetPassword}><a className="link link-hover" >Forgot password?</a></div>
+
+
+                                <button type='submit' className="btn bg-[#60ece8] text-white border-0 mt-2 w-80">Login</button>
+
+
                                 <p className=''>Don't Have An Account? <Link className='text-blue-500' to='/register'>Register</Link></p>
                                 {
                                     error && <p className='text-sm text-red-500'>{error}</p>
