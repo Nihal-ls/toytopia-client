@@ -1,8 +1,21 @@
 import React, { use } from 'react';
 import { Authcontext } from '../Provider/AuthProvider';
 import profileimg from "../assets/profile.webp"
+import { Link } from 'react-router';
 const Navbar = () => {
-    const { user } = use(Authcontext)
+    const { user, logOut } = use(Authcontext)
+    console.log({user})
+    const handleLogout = () => {
+        console.log('logout')
+        logOut()
+            .then(res => {
+                console.log(res)
+                alert('logOut successful')
+            })
+            .catch(err => {
+                alert('something went Wrong,please try again later', err.massage)
+            })
+    }
     return (
         <div className='bg-[#A0E7E5]'>
             <div className="navbar container mx-auto">
@@ -43,11 +56,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end items-center">
+                   <img className='w-[40px] rounded-full mr-2 border-2 ' src={ user?.photoURL  || profileimg} alt="" />
+
                     {
-                        user ? <img className='w-[40px] rounded-full mr-2 border-2 ' src={user.photoURL} alt="" /> : <img className='w-[40px] rounded-full mr-2 border-2 ' src={profileimg} alt="" />
+                        user ?
+                            <a onClick={handleLogout} className="btn btn-primary hover:scale-120 transition ease-in-out" >Log Out</a>
+                            : <Link to='/login' className="btn btn-primary hover:scale-120 transition ease-in-out" >Login</Link>
 
                     }
-                    <a className="btn btn-primary hover:scale-120 transition ease-in-out" >Login</a>
                 </div>
             </div>
         </div>

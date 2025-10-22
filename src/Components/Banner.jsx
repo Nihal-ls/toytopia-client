@@ -4,7 +4,7 @@ import bannerimg from '../assets/bannerImg.jpg'
 const Banner = () => {
     return (
         <div>
-            <section className='w-full sm:w-4/4 md:w-1/3 lg:w-1/2  mx-auto'>
+            <section className='w-full sm:w-4/4 md:w-1/2 lg:w-1/2  mx-auto'>
                 <div
                     className="bg-no-repeat bg-cover mt-10  rounded-2xl "
                     style={{ backgroundImage: `url(${bannerimg})` }}
