@@ -5,7 +5,8 @@ import app from '../Firebase/firebase.config';
 const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
    const [user,setUser] = useState(null)
-    console.log(user)
+   const [loading,setLoading] = useState(true)
+    console.log(user,loading)
    const  createUser= (email,password) => {
     return createUserWithEmailAndPassword(auth,email,password)
 
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
    const observer =onAuthStateChanged(auth,(currentUser) => {
         setUser(currentUser)
+        setLoading(false)
 
     })
     return () => {
@@ -41,6 +43,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     login,
     googleSignin,
+    loading,
+    setLoading,
    }
 
     return <Authcontext value={authData}>{children}</Authcontext>

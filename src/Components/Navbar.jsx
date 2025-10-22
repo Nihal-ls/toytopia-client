@@ -3,7 +3,7 @@ import { Authcontext } from '../Provider/AuthProvider';
 import profileimg from "../assets/profile.webp"
 import { Link } from 'react-router';
 const Navbar = () => {
-    const { user, logOut } = use(Authcontext)
+    const { user, logOut,loading } = use(Authcontext)
     console.log({user})
     const handleLogout = () => {
         console.log('logout')
@@ -15,6 +15,9 @@ const Navbar = () => {
             .catch(err => {
                 alert('something went Wrong,please try again later', err.massage)
             })
+    }
+    if(loading){
+        return <span className="loading loading-spinner text-info"></span>
     }
     return (
         <div className='bg-[#A0E7E5]'>
@@ -56,7 +59,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end items-center">
-                   <img className='w-[40px] rounded-full mr-2 border-2 ' src={ user?.photoURL  || profileimg} alt="" />
+                   <img className='w-[40px] rounded-full mr-2 border-2 ' src={ user?.photoURL || profileimg }
+                     title={user.displayName}
+                   alt="" />
 
                     {
                         user ?
