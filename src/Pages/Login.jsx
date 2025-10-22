@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import bgimg from '../assets/page-bg.jpg'
 import googleimg from '../assets/icons8-google.svg'
 import { Link, useLocation, useNavigate } from 'react-router';
@@ -15,6 +15,10 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
     console.log(location)
+
+    useEffect(() => {
+        document.title = "Login Page - ToyTopia";
+    }, []);
 
     const hanldeGoogleSignIn = () => {
         googleSignin(googleprovider)

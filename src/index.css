@@ -1,5 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui";
 .active{
-    @apply font-semibold
+    @apply text-primary font-bold scale-120
 }

@@ -6,6 +6,7 @@ import Register from "../Pages/Register";
 import Viewdetails from "../Pages/Viewdetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AllToys from "../Pages/AllToys";
+import Profile from "../Pages/Profile.";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -41,10 +42,19 @@ const router = createBrowserRouter([{
 },
 {
     path: 'allToys',
-    element: <AllToys />,
+    element: <PrivateRoute>
+        <AllToys />
+    </PrivateRoute>,
     loader: () => fetch('../Toys.json'),
     hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 
+
+},
+{
+    path: 'profile',
+    element: <PrivateRoute>
+       <Profile/>
+    </PrivateRoute>,
 
 },
 

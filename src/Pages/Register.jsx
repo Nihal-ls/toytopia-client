@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import bgimg from '../assets/page-bg.jpg'
 import { Link, useNavigate } from 'react-router';
 import googleImg from '../assets/icons8-google.svg'
@@ -15,6 +15,9 @@ const Register = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        document.title = "Registration Page - ToyTopia";
+    }, []);
 
     const validatePassword = (password) => {
         const checkuppercase = /[A-Z]/.test(password);
@@ -58,16 +61,16 @@ const Register = () => {
                 });
                 const user = result.user
                 console.log(user)
-                updateUser({displayName: Name,photoURL: photo})
-                .then(() => {
-                    setUser({...user,displayName: Name,photoURL: photo})
-                    navigate('/')
-                }).catch(err => {
-                    alert('something went wrong')
-                    console.log(err);
-                    setUser(user)
-                })
-                
+                updateUser({ displayName: Name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: Name, photoURL: photo })
+                        navigate('/')
+                    }).catch(err => {
+                        alert('something went wrong')
+                        console.log(err);
+                        setUser(user)
+                    })
+
 
 
             }).catch(err => console.log(err))

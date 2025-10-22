@@ -4,12 +4,16 @@ import Toycard from '../Components/Toycard';
 import Slider from '../Components/Slider';
 import { Authcontext } from '../Provider/AuthProvider';
 import Discount from '../Components/Discount';
+import { useEffect } from 'react';
 const Home = () => {
     const AllProducts = useLoaderData()
     console.log(AllProducts)
     const popularToys = AllProducts.slice(0, 6)
     console.log(popularToys)
 
+    useEffect(() => {
+        document.title = "Home - Toy Store";
+    }, []);
     return (
         <div className='min-h-[82vh]'>
 
