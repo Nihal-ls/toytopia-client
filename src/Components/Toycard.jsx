@@ -1,8 +1,9 @@
 import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
+import { Link } from 'react-router';
 
 const Toycard = ({ toy }) => {
-    const { pictureURL, toyName, price, rating, availableQuantity } = toy
+    const { pictureURL, toyName, price, rating, availableQuantity,toyId } = toy
     return (
         <div>
             <div className="card bg-base-100  mx-auto md:mx-auto w-70 mt-5  shadow-sm hover:scale-110 transition ease-in-out">
@@ -34,7 +35,7 @@ const Toycard = ({ toy }) => {
                             <p className='font-semibold'>{availableQuantity} Available</p>
                         </div>
                         <div className="">
-                            <button className="btn bg-[#60ece8] text-white hover:scale-120 transition ease-in-out">View Details</button>
+                            <Link to={`/view-details/${toyId}`}  className="btn bg-[#60ece8] text-white hover:scale-120 transition ease-in-out">View Details</Link>
                         </div>
                     </div>
                 </div>

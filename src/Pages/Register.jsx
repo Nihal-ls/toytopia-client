@@ -5,9 +5,19 @@ import googleImg from '../assets/icons8-google.svg'
 import { Authcontext } from '../Provider/AuthProvider';
 import { LuChevronsLeftRightEllipsis } from 'react-icons/lu';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const googleprovider = new GoogleAuthProvider()
 const Register = () => {
     const { createUser, setUser, googleSignin } = use(Authcontext)
+
+    const validatePassword = (password) => {
+        const checkuppercase = /[A-Z]/.test(password);
+        const checkLowecase = /[a-z]/.test(password);
+        const passlength = password.length >= 6;
+
+        return checkuppercase && checkLowecase && passlength;
+    };
+
     const handleRegister = (e) => {
         e.preventDefault()
         const Name = e.target.name.value
@@ -15,13 +25,28 @@ const Register = () => {
         const email = e.target.email.value
         const password = e.target.password.value
 
-
+        if (!validatePassword(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Weak Password",
+                text: "Password must contain at least one uppercase, one lowercase letter, and be at least 6 characters long.",
+                confirmButtonColor: "#3085d6",
+            });
+            return;
+        }
 
         createUser(email, password)
             .then(result => {
+                Swal.fire({
+                    icon: "Success",
+                    title: "Successful",
+                    text: "Registration Successful",
+                    confirmButtonColor: "#3085d6",
+                });
                 const user = result.user
                 console.log(user)
                 setUser(user)
+
 
             }).catch(err => console.log(err))
 

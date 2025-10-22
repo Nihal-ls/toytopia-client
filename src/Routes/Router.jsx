@@ -3,6 +3,7 @@ import HomeLayout from "../Layout/HomeLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Viewdetails from "../Pages/Viewdetails";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -18,12 +19,18 @@ const router = createBrowserRouter([{
     ]
 },
 {
-path:'/login',
-Component: Login
+    path: '/login',
+    Component: Login
 },
 {
-path:'/register',
-Component: Register
+    path: '/register',
+    Component: Register
+},
+{
+    path: 'view-details/:ToyId',
+    Component: Viewdetails,
+    loader: () => fetch('../Toys.json')
+
 },
 
 ])
