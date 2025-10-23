@@ -37,7 +37,7 @@ const Profile = () => {
 
         <div>
             <Navbar />
-            <div className="hero w-200 mx-auto   min-h-screen">
+            <div className="hero w-100 md:w-200 mx-auto   min-h-screen overflow-hidden">
                 <div className="shadow-lg rounded-lg ">
                     <div className="hero-content py-10 flex-col  lg:flex-row">
                         {

@@ -86,7 +86,7 @@ const Register = () => {
     }
     return (
         <div>
-            <div className="hero min-h-screen bg-cover bg-no-repeat"
+            <div className="hero min-h-screen bg-cover bg-no-repeat overflow-hidden" 
                 style={{ backgroundImage: `url(${bgimg})` }}
 
             >

@@ -82,12 +82,11 @@ const Login = () => {
         .catch(err => console.log(err))
     }
     return (
-        <div>
-            <div className="hero min-h-screen bg-cover bg-no-repeat"
-                style={{ backgroundImage: `url(${bgimg})` }}
+                <div className="hero  min-h-screen bg-no-repeat bg-cover overflow-hidden"
+                style={{ backgroundImage: `url(${bgimg})`  }}
 
             >
-                <div className="hero-content bg-white/20 px-10 py-5 md:px-20 md:px-10 rounded-2xl flex-col lg:flex-row-reverse">
+                <div className="hero-content bg-white/20 px-10 py-5 md:px-20  rounded-2xl flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold text-white">Welcome Back!</h1>
                         <h1 className="text-4xl font-bold text-white">Login Now!</h1>
@@ -117,7 +116,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
