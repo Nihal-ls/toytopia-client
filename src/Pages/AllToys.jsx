@@ -22,8 +22,8 @@ const AllToys = () => {
         }
 
         let url = '';
-        if (type === 'high') url = 'http://localhost:5000/toys/filter/high';
-        if (type === 'low') url = 'http://localhost:5000/toys/filter/low';
+        if (type === 'high') url = 'https://toytopia-backhand.vercel.app//toys/filter/high';
+        if (type === 'low') url = 'https://toytopia-backhand.vercel.app//toys/filter/low';
 
         if (!url) return;
 
@@ -58,7 +58,7 @@ const AllToys = () => {
             }
 
             try {
-                const res = await fetch(`http://localhost:5000/toys/search/${text}`);
+                const res = await fetch(`https://toytopia-backhand.vercel.app//toys/search/${text}`);
                 const result = await res.json();
 
                 // ✅ Remove dupes by _id (extra safety)

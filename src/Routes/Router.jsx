@@ -15,13 +15,13 @@ const router = createBrowserRouter([{
         {
             index: true,
             Component: Home,
-            loader: () => fetch('http://localhost:5000/toys'),
+            loader: () => fetch('https://toytopia-backhand.vercel.app//toys'),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
         },
         {
             path: 'allToys',
             element: <AllToys />,
-            loader: () => fetch('http://localhost:5000/toys'),
+            loader: () => fetch('https://toytopia-backhand.vercel.app//toys'),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 
 
@@ -41,7 +41,7 @@ const router = createBrowserRouter([{
 {
     path: 'view-details/:ToyId',
     element: <Viewdetails></Viewdetails>,
-    loader: () => fetch(`http://localhost:5000/toys`),
+    loader:  => fetch(`https://toytopia-backhand.vercel.app//toys`),
     hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 
 
