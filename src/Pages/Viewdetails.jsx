@@ -6,14 +6,14 @@ import Swal from 'sweetalert2';
 import { AiFillStar } from 'react-icons/ai';
 const Viewdetails = () => {
     const data = useLoaderData()
-    console.log(data)
+    console.log(data);
+       const [toy, settoy] = useState([])
     const { ToyId } = useParams()
     console.log(ToyId)
-    const [toy, settoy] = useState([])
+ 
     useEffect(() => {
 
-        const clickedToy = data.find(SingleToy => SingleToy.toyId == ToyId)
-
+        const clickedToy = data.find(SingleToy => SingleToy._id == ToyId)
         settoy(clickedToy)
     }, [data, ToyId])
     console.log(toy)
@@ -39,14 +39,14 @@ const Viewdetails = () => {
                             alt="Album" />
                     </figure>
                     <div className="card-body max-w-120 ">
-                        <h2 className="card-title text-2xl font-bold ">{toy.toyName}</h2>
-                        <p className='text-gray-500'>{toy.description}</p>
-                        <div className=" flex gap-20">
+                        <h2 className="card-title text-2xl font-bold border-b-1 pb-2 border-gray-400 border-dashed">{toy.toyName}</h2>
+                        <p className='text-gray-500 border-b-1 pb-2 border-gray-400 border-dashed'>{toy.description}</p>
+                        <div className=" flex  gap-20 border-b-1 pb-2 border-gray-400 border-dashed">
                             <div className="price">
                                 <p className='font-bold'>${toy.price}</p>
                             </div>
                             <div className="rattings">
-                                <div className=" flex items-center gap-2">
+                                <div className=" flex flex-row-reverse items-center gap-2">
                                  <div className="flex">
                                     <AiFillStar color='gold'/>
                                     <AiFillStar  color='gold'/>
@@ -57,7 +57,7 @@ const Viewdetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className=" flex gap-20">
+                        <div className=" flex gap-20 items-center border-b-1 pb-2 border-gray-400 border-dashed">
                             <div className="price">
                                 <p className='text-lg font-bold'>{toy.sellerName}</p>
                             </div>
@@ -81,7 +81,7 @@ const Viewdetails = () => {
                         <label htmlFor="" className='text-center my-2 font-semibold'>Your FeedBack</label>
                         <textarea required name="" className='border-2 border-gray-200 w-80 mx-auto rounded-md pl-4' placeholder='Your Feedback' rows="6" cols="45" id=""></textarea>
                     </div>
-                    <button type='submit' className='btn btn-primary flex w-80 mx-auto mt-6'>Try Now</button>
+                    <button type='submit' className='btn bg-blue-400 flex w-80 mx-auto mt-6'>Try Now</button>
                 </form>
             </div>
             <footer>

@@ -6,12 +6,9 @@ import Navbar from '../Components/Navbar';
 const HomeLayout = () => {
     return (
         <div>
-            <header>
                  <Navbar/>
-            </header>
-            <main>
+            
                 <Outlet/>
-            </main>
             <footer>
                <Footer/> 
             </footer>

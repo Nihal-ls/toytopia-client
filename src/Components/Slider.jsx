@@ -13,7 +13,8 @@ const Slider = () => {
     const sliderdata = data.slice(7, 13)
     console.log(sliderdata)
     return (
-        <div className="w-full sm:w-4/4 md:w-1/3 lg:w-1/2   mx-auto my-10">
+        <div className="w-full sm:w-4/4 md:max-w-7xl lg:max-w-7xl  mx-auto my-10">
+          <h1 className="text-center text-3xl font-bold">New Arrivals</h1>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 loop={true}

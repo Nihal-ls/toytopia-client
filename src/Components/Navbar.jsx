@@ -1,10 +1,8 @@
 import React, { use } from 'react';
 import { Authcontext } from '../Provider/AuthProvider';
-import profileimg from "../assets/profile.webp"
 import { Link, NavLink } from 'react-router';
 const Navbar = () => {
-    const { user, logOut, loading } = use(Authcontext)
-    console.log({ user })
+    const { user, logOut } = use(Authcontext)
     const handleLogout = () => {
         console.log('logout')
         logOut()
@@ -16,19 +14,18 @@ const Navbar = () => {
                 alert('something went Wrong,please try again later', err.massage)
             })
     }
-    if (loading) {
-        return <span className="loading loading-spinner text-info"></span>
-    }
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/profile'>Profile</NavLink></li>
+        {user && <li><NavLink to='/profile'>Profile</NavLink></li>
+        }
         <li><NavLink to='/allToys'>All Toys</NavLink></li>
 
     </>
 
     return (
-        <div className='bg-[#A0E7E5]'>
-            <div className="navbar container mx-auto">
+        <div className='bg-[#A0E7E5] sticky top-0 z-50 shadow-md'>
+            <div className="navbar max-w-7xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,23 +34,22 @@ const Navbar = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                              {links}
+                            {links}
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-2xl font-bold">TOYTOPIA</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        { links}
+                        {links}
                     </ul>
                 </div>
                 <div className="navbar-end items-center">
                     {
                         user ?
-                            <img className='w-[40px] rounded-full mr-2 border-2 ' src={user?.photoURL}
-                                title={user.displayName}
-                                alt="" /> : <img className='w-[40px] rounded-full mr-2 border-2 ' src={profileimg}
-                                    alt="" />
+                            <img className='w-10 rounded-full mr-2 border-2 ' src={user?.photoURL}
+                                title={user?.displayName}
+                                alt="" /> :<Link to='/register' className="btn btn-primary hover:scale-120 transition ease-in-out mr-2" >Register</Link>
                     }
 
                     {

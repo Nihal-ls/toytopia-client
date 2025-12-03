@@ -15,9 +15,17 @@ const router = createBrowserRouter([{
         {
             index: true,
             Component: Home,
-            loader: () => fetch('../Toys.json'),
+            loader: () => fetch('http://localhost:5000/toys'),
             hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
-        }
+        },
+        {
+            path: 'allToys',
+            element: <AllToys />,
+            loader: () => fetch('http://localhost:5000/toys'),
+            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
+
+
+        },
 
 
     ]
@@ -32,28 +40,17 @@ const router = createBrowserRouter([{
 },
 {
     path: 'view-details/:ToyId',
-    element: <PrivateRoute>
-        <Viewdetails></Viewdetails>
-    </PrivateRoute>,
-    loader: () => fetch('../Toys.json'),
+    element: <Viewdetails></Viewdetails>,
+    loader: () => fetch(`http://localhost:5000/toys`),
     hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 
 
 },
-{
-    path: 'allToys',
-    element: <PrivateRoute>
-        <AllToys />
-    </PrivateRoute>,
-    loader: () => fetch('../Toys.json'),
-    hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
 
-
-},
 {
     path: 'profile',
     element: <PrivateRoute>
-       <Profile/>
+        <Profile />
     </PrivateRoute>,
 
 },

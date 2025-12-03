@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { CiLineHeight } from 'react-icons/ci';
 const googleprovider = new GoogleAuthProvider()
 const Register = () => {
-    const { createUser, setUser, googleSignin, updateUser} = use(Authcontext)
+    const { createUser, setUser, googleSignin, updateUser } = use(Authcontext)
 
     const [nameError, setNameerror] = useState('')
 
@@ -80,13 +80,18 @@ const Register = () => {
     }
     const hanldeGoogleSignIn = () => {
         googleSignin(googleprovider)
-            .then(res => setUser(res.user)
+            .then(res => {
+                setUser(res.user)
+                navigate('/')
+
+            }
+
             )
             .catch(err => console.log(err))
     }
     return (
         <div>
-            <div className="hero min-h-screen bg-cover bg-no-repeat overflow-hidden" 
+            <div className="hero min-h-screen bg-cover bg-no-repeat overflow-hidden"
                 style={{ backgroundImage: `url(${bgimg})` }}
 
             >

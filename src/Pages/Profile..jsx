@@ -3,7 +3,7 @@ import Navbar from '../Components/Navbar';
 import { Authcontext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import Footer from '../Components/Footer';
-
+import profileimg from '../assets/profile.webp'
 const Profile = () => {
     const { user, updateUser, setUser,loading } = use(Authcontext)
     const handleUpdateprofile = (e) => {

@@ -4,12 +4,12 @@ import bannerimg from '../assets/bannerImg.jpg'
 const Banner = () => {
     return (
         <div>
-            <section className='w-full sm:w-4/4 md:w-1/2 lg:w-1/2  mx-auto'>
+            <section className=' mx-auto sm:w-4/4 md:max-w-7xl lg:max-w-7xl  '>
                 <div
                     className="bg-no-repeat bg-cover mt-10  rounded-2xl "
                     style={{ backgroundImage: `url(${bannerimg})` }}
                 >
-                    <div className="bg-black/25 rounded-2xl">
+                    <div className="bg-black/15 rounded-2xl">
                     <div className="hero-content text-neutral-content text-center">
                         <div className="max-w-md   flex justify-center flex-col">
                             <h1 className="mb-5 text-5xl font-bold">ToyTopia </h1>
