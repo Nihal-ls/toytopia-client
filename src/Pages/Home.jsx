@@ -23,7 +23,7 @@ const Home = () => {
             <WhychooseUS />
 
 
-            <h2 className='text-4xl text-center mt-10 font-bold '>Popular Pproducts </h2>
+            <h2 className='text-4xl text-center my-10 font-bold '>Popular Pproducts </h2>
             <div className="sm:w-80 md:w-230 lg:w-7xl   mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {
                     popularToys.map(toy => <Toycard toy={toy}></Toycard>)

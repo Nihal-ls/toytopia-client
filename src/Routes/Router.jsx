@@ -7,26 +7,38 @@ import Viewdetails from "../Pages/Viewdetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AllToys from "../Pages/AllToys";
 import Profile from "../Pages/Profile.";
+import ToyTopiaLoader from "../Components/ToyTopiaLoader";
+import AboutUs from "../Pages/AboutUs";
+import Blogs from "../Pages/Blogs";
 
 const router = createBrowserRouter([{
     path: '/',
     element: <HomeLayout></HomeLayout>,
+    hydrateFallbackElement: <ToyTopiaLoader />,
     children: [
         {
             index: true,
             Component: Home,
-            loader: () => fetch('https://toytopia-backhand.vercel.app//toys'),
-            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
+            loader: () => fetch('https://toytopia-backhand.vercel.app/toys'),
+            hydrateFallbackElement: <ToyTopiaLoader />
         },
         {
             path: 'allToys',
             element: <AllToys />,
-            loader: () => fetch('https://toytopia-backhand.vercel.app//toys'),
-            hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
-
+            loader: () => fetch('https://toytopia-backhand.vercel.app/toys'),
+            hydrateFallbackElement: <ToyTopiaLoader />
 
         },
+         {
+            path: '/Aboutus',
+            element: <AboutUs />,
 
+        },
+         {
+            path: '/Blogs',
+            element: <Blogs />,
+
+        },
 
     ]
 },
@@ -41,9 +53,8 @@ const router = createBrowserRouter([{
 {
     path: 'view-details/:ToyId',
     element: <Viewdetails></Viewdetails>,
-    loader:  => fetch(`https://toytopia-backhand.vercel.app//toys`),
-    hydrateFallbackElement: <div className="flex justify-center"><span className="loading loading-spinner text-info min-h-screen items-center w-20"></span></div>,
-
+    loader: () => fetch(`https://toytopia-backhand.vercel.app/toys`),
+    hydrateFallbackElement: <ToyTopiaLoader />,
 
 },
 
