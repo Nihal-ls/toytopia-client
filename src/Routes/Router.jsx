@@ -10,6 +10,11 @@ import Profile from "../Pages/Profile.";
 import ToyTopiaLoader from "../Components/ToyTopiaLoader";
 import AboutUs from "../Pages/AboutUs";
 import Blogs from "../Pages/Blogs";
+import ShippingInfo from "../Pages/ShippingInfo";
+import MyCart from "../Pages/Cart";
+import Success from "../Pages/Sucess";
+import MyOrders from "../Pages/Myorders";
+import DashboardLayout from "../Layout/DashboardLayout.";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -29,14 +34,36 @@ const router = createBrowserRouter([{
             hydrateFallbackElement: <ToyTopiaLoader />
 
         },
-         {
+        {
             path: '/Aboutus',
             element: <AboutUs />,
 
         },
-         {
+        {
+            path: '/success',
+            element: <PrivateRoute>
+                <Success />
+            </PrivateRoute>,
+
+        },
+        {
             path: '/Blogs',
             element: <Blogs />,
+
+        },
+        {
+            path: '/Shipping-info',
+            element: <ShippingInfo />,
+
+        },
+        {
+            path: '/My-cart',
+            element: <PrivateRoute><MyCart /></PrivateRoute>,
+
+        },
+        {
+            path: '/my-orders',
+            element: <PrivateRoute><MyOrders /></PrivateRoute>,
 
         },
 
@@ -65,6 +92,15 @@ const router = createBrowserRouter([{
     </PrivateRoute>,
 
 },
+{
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [{
+        index: true,
+        element: <PrivateRoute><MyOrders /></PrivateRoute>,
 
+
+    }]
+}
 ])
 export default router
