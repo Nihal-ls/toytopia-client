@@ -25,7 +25,7 @@ const Success = () => {
             const finalizeOrder = async () => {
                 try {
                     // Fetch cart
-                    const cartRes = await axios.get(`http://localhost:5000/cart?email=${user.email}`);
+                    const cartRes = await axios.get(`https://toytopia-backhand.vercel.app/cart?email=${user.email}`);
                     const cartData = cartRes.data;
 
                     if (cartData.length > 0) {
@@ -38,9 +38,9 @@ const Success = () => {
                         };
 
                         // Post order
-                        await axios.post('http://localhost:5000/orders', orderPayload);
+                        await axios.post('https://toytopia-backhand.vercel.app/orders', orderPayload);
                         // Clear cart
-                        await axios.delete(`http://localhost:5000/clear-cart?email=${user.email}`);
+                        await axios.delete(`https://toytopia-backhand.vercel.app/clear-cart?email=${user.email}`);
                     }
                 } catch (err) {
                     console.error("Order processing failed", err);

@@ -21,7 +21,7 @@ const MyCart = () => {
 
     const fetchCart = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/cart?email=${user.email}`);
+            const response = await axios.get(`https://toytopia-backhand.vercel.app/cart?email=${user.email}`);
             setCartItems(response.data);
             setLoading(false);
         } catch (error) {
@@ -39,7 +39,7 @@ const MyCart = () => {
         if (cartItems.length === 0) return;
 
         try {
-            const response = await axios.post('http://localhost:5000/create-checkout-session', {
+            const response = await axios.post('https://toytopia-backhand.vercel.app/create-checkout-session', {
                 cartItems,
                 userEmail: user.email
             });
@@ -67,7 +67,7 @@ const MyCart = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`http://localhost:5000/cart/${id}`);
+                    const response = await axios.delete(`https://toytopia-backhand.vercel.app/cart/${id}`);
                     if (response.data.deletedCount > 0) {
                         setCartItems(cartItems.filter(item => item._id !== id));
                         Swal.fire({ title: "Deleted!", icon: "success", showConfirmButton: false, timer: 1500 });

@@ -56,7 +56,7 @@ const Viewdetails = () => {
 
         try {
             // 3. Make the POST request using Axios
-            const response = await axios.post('http://localhost:5000/cart', cartItem);
+            const response = await axios.post('https://toytopia-backhand.vercel.app/cart', cartItem);
 
             // 4. Handle Success
             if (response.data.insertedId) {

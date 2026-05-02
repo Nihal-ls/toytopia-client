@@ -18,7 +18,7 @@ const MyOrders = () => {
         if (userEmail) {
             const fetchOrders = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:5000/my-orders?email=${userEmail}`);
+                    const res = await axios.get(`https://toytopia-backhand.vercel.app/my-orders?email=${userEmail}`);
                     setOrders(res.data);
                 } catch (err) {
                     console.error("Fetch orders failed", err);
