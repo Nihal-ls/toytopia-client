@@ -6,6 +6,7 @@ import { path } from 'framer-motion/client';
 import { MdManageAccounts } from 'react-icons/md';
 import { IoMdExit } from 'react-icons/io';
 import { BsCart4 } from 'react-icons/bs';
+import { RxDashboard } from 'react-icons/rx';
 
 const Navbar = () => {
     const { user, logOut } = use(Authcontext);
@@ -121,14 +122,8 @@ const Navbar = () => {
                                         alt="User Profile"
                                     /></div>
                                     <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-
                                         <li>
-                                            <Link to="/profile" className='text-lg font-bold'><MdManageAccounts size={24} />Profile</Link>
-
-
-                                        </li>
-                                        <li>
-                                            <Link to="/dashboard" className='text-lg font-bold'><MdManageAccounts size={24} />Profile</Link>
+                                            <Link to="/dashboard" className='text-lg font-bold'><RxDashboard size={24} />Dashboard</Link>
 
 
                                         </li>

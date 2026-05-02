@@ -61,11 +61,7 @@ const router = createBrowserRouter([{
             element: <PrivateRoute><MyCart /></PrivateRoute>,
 
         },
-        {
-            path: '/my-orders',
-            element: <PrivateRoute><MyOrders /></PrivateRoute>,
 
-        },
 
     ]
 },
@@ -85,13 +81,7 @@ const router = createBrowserRouter([{
 
 },
 
-{
-    path: 'profile',
-    element: <PrivateRoute>
-        <Profile />
-    </PrivateRoute>,
 
-},
 {
     path: "/dashboard",
     element: <DashboardLayout />,
@@ -100,7 +90,14 @@ const router = createBrowserRouter([{
         element: <PrivateRoute><MyOrders /></PrivateRoute>,
 
 
-    }]
+    },
+    {
+        path: '/dashboard/profile',
+        element: <PrivateRoute>
+            <Profile />
+        </PrivateRoute>,
+
+    },]
 }
 ])
 export default router

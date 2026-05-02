@@ -110,7 +110,7 @@ const Success = () => {
                         </button>
 
                         <button
-                            onClick={() => navigate('/myOrders')} // Assuming you'll build this next
+                            onClick={() => navigate('/dashboard')} // Assuming you'll build this next
                             className="flex items-center justify-center gap-3 py-5 bg-white border-2 border-slate-900 text-slate-900 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all active:scale-95 group"
                         >
                             <ReceiptText className="w-5 h-5" /> View My Orders <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
